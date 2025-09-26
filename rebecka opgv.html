@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+
+
+    <script>
+
+    //modell
+    let letter = [];
+    let passWords = [];
+    let pSLength = 2
+    const lowercase = "abcdefghijklmnopqrstuvwxyzæøå";
+    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
+    const numbers = "0123456789";
+    const special = "!@#$%^&*()_-+={}[]|:;'<>,.?/~";
+    
+
+
+    //view
+    
+    function drawView(){
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        ${drawPassword()}
+        <input type="number" onchange=passWordLength(this.value)>
+        <div>
+        <div>checkbox</div> 
+        <div>checkbox</div>
+        <button onclick="createPassword()">Generate password</button>
+        <button onclick="resetPassword()">Reset</button>
+        </div>
+
+        `
+
+    }
+    
+/*     function passWordLength(input){
+        console.log(input)
+        pSLength = input
+        return ps
+
+    } */
+
+
+    //controller
+
+    drawView()       
+    
+
+
+    
+
+    function createPassword(){
+     //trenger å bruke konstantene og random sammen for å lage et passord
+     //trenger en loop som gjør det her til passored er så langt som jeg ønsker det
+     //ønsker å gjøre den random også (så det ikke går i UCRandom + lCRandom + numbersRandom + specialRandom] mønster )
+
+
+        let lCRandom = createLC();
+/*         let UCRandom = createUC();
+        let numbersRandom = createNumb();
+        let specialRandom = createSpecial(); */
+/*         let letter = [UCRandom + lCRandom + numbersRandom + specialRandom]; */
+
+        passWords.push(letter);
+
+
+        //brukte lang tid på å få denne til å fungere^^
+        //måtte søke opp der jeg ikke forsto hvorfor jeg klarte å gi LC,UC,Numb og special 
+        //verdi men ikke klarte å sette dem sammen
+    
+
+        /* console.log(passWords) */
+
+
+      
+      
+      
+/*         let randomIndex = Math.floor(Math.random() * lowercase.length)
+        lCRandom = lowercase[randomIndex]
+        passWords = [lCRandom] */
+        // kommer til å lage flere funksjoner, men denne funka for en bokstav
+
+        //søkte opp hvordan math.random funka og skjønte at jeg måtte splitte dem opp
+        //må prøve å lage en loop for å få mer enn en bokstav
+
+        //passWords = (Math.random * lowercase, uppercase, numbers, Symbol) <- hva jeg starta med
+        //husker ikke hva jeg skal gjøre videre her ^^ eller om det er riktig
+
+        // ønsker å lage et input field der man kan velge hvor langt passoredt skal være
+        // kode kan se sånn ut passWordLength.length
+        // må lage kode som fjerner variabler fra random oppleg
+        
+        
+        
+
+        } 
+
+        function createLC(){
+            let lCRandom;
+        for(let counter = 0; counter < pSLength; counter++){
+        let randomIndex = Math.floor(Math.random() * lowercase.length)
+        lCRandom = lowercase[randomIndex]
+        letter.push(lCRandom)
+        console.log(lCRandom)}
+        return lCRandom
+        }
+/*         function createUC(){
+        let randomIndex = Math.floor(Math.random() * uppercase.length)
+        let UCRandom = uppercase[randomIndex]   
+        console.log(UCRandom) 
+        return UCRandom
+        }
+        function createNumb(){
+        let randomIndex = Math.floor(Math.random() * numbers.length)
+        let numbersRandom = numbers[randomIndex]
+        console.log(numbersRandom)
+        return numbersRandom
+        }
+        function createSpecial(){
+        let randomIndex = Math.floor(Math.random() * special.length)
+        let specialRandom = special[randomIndex]
+        console.log(specialRandom)   
+        return specialRandom        
+        } */
+
+    
+
+
+    function resetPassword(){
+        /* passWords = "" */
+        drawView()
+    }
+
+  //plan
+    // trenger en funksjon som drawPassord : yupp
+    // funksjoner til å sette krav til passord laginga : niks
+    // funk som lager passord : nesten
+    // resetknapp: lagd (husk å fjern comments vekk fra funk)
+    //
+    function drawPassword(){
+        let pass = ``;
+
+        for(let counter = 0; counter < passWords.length; counter++){
+            pass += `<button>${passWords[counter]}</button>`
+            console.log(counter)
+
+        }
+        return pass;
+        
+    }    </script>
+</body>
+</html>
